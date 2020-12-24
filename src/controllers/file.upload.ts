@@ -31,7 +31,8 @@ export class FileUpload {
   @Post('/', [ 'res', 'files' ])
   async upload(res, files) {
     if (files.file) {
-      this.emitter.emit('process', files.file);
+      const { tempFilePath, size } = files.file;
+      this.emitter.emit('extract', tempFilePath, size);
       res.sendStatus(200);
     }
 

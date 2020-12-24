@@ -14,39 +14,46 @@ export class Extract {
   constructor(private queue = config.get('Rabbit').queue) {
   }
 
-  @On('process')
-  async process({ size, tempFilePath }) {
-    try {
-      let total = 0;
-      const streams: any = [];
-      const chunk = size / (1e1);
-      // todo obvi don't do this make sure to send the right name.
-      const filename = tempFilePath.split('/').slice(-1)[0];
-      const _path = path.join(__filename, '../../../tmp/', filename);
-      const ch = await this.rabbit.channel();
+  getPath(filename) {
+    return path.join(__filename, '../../../tmp/', filename);
+  }
 
-      while ((chunk + total) <= size) {
-        streams.push(
-          fs.createReadStream(_path, {
-            start: total,
-            end: total + chunk - 1,
-            emitClose: true,
-            // encoding: 'utf8',
-            highWaterMark: 43
-          }));
-        total += chunk;
-      }
-      if (total < size) {
-        streams.push(
-          fs.createReadStream(_path, {
-            start: total,
-            end: size,
-            emitClose: true,
-            encoding: 'utf8',
-            highWaterMark: 43
-          }));
-      }
+  generateChunkedStreams(filename, size, chunk) {
+    const path = this.getPath(filename);
+    const streams: any = [];
+    let total = 0;
+
+    while ((chunk + total) <= size) {
+      streams.push(
+        fs.createReadStream(path, {
+          start: total,
+          end: total + chunk - 1,
+          emitClose: true,
+          highWaterMark: 43
+        }));
+      total += chunk;
+    }
+    if (total < size) {
+      streams.push(
+        fs.createReadStream(path, {
+          start: total,
+          end: size,
+          emitClose: true,
+          highWaterMark: 43
+        }));
+    }
+
+    return streams;
+  }
+
+  @On('extract')
+  async extract(filename, size) {
+    try {
+      const chunk = size / (1e1);
+      const streams = this.generateChunkedStreams(filename, size, chunk);
+      const ch = await this.rabbit.channel();
       const close = streams.map(stream => once(stream, 'close'));
+
       setImmediate(() => {
         streams.map(stream => {
           stream.on('data', async (data) => {
@@ -56,10 +63,11 @@ export class Extract {
       });
 
       await Promise.all(close);
-
     }
     catch (error) {
-      console.log(error);
+      // retry logic
+      // report the error
+      console.log(error)
     }
   }
 }
