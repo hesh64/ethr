@@ -8,13 +8,7 @@ export class Rabbit {
   constructor(protected options) {}
 
   async connect() {
-    try {
-      this.con = await connect(this.options.url);
-      // console.log(await this.con.createChannel());
-    }
-    catch (e) {
-      console.log(e);
-    }
+    this.con = await connect(this.options.url);
   }
 
   channel(): Promise<any> {
@@ -44,19 +38,3 @@ export class Rabbit {
     };
   }
 }
-
-// async function consume() {
-//   const con = await connect(url);
-//   const ch = con.createChannel();
-//   await ch.assertQueue(queue);
-//   return ch.consume(queue, function (msg) {
-//     ch.ack(msg);
-//   });
-// }
-//
-// async function main() {
-//   // start the consumer
-//   return consume();
-// }
-//
-// main().catch(console.log);

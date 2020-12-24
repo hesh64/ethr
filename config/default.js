@@ -9,5 +9,7 @@ module.exports = {
   Web3: {
     url: 'https://mainnet.infura.io/v3/f3c095656381439aa1acb1722d9c62f2',
   },
-  Redis: {}
+  Redis: {
+    port: 6379,
+  },
 };

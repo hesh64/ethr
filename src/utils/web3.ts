@@ -1,3 +1,5 @@
+import _Web3 from 'web3';
+
 import { Singleton, SingletonTypes } from '../frame/app';
 
 @Singleton({ type: SingletonTypes.DataSource })
@@ -7,10 +9,14 @@ export class Web3 {
   constructor(private config) {}
 
   public async init() {
-    this.web = new Web3(this.config.url);
+    this.web = new _Web3(this.config.url);
   }
 
   public get client() {
     return this.web;
+  }
+
+  public get ethClient() {
+    return this.client.eth;
   }
 }

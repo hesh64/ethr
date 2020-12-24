@@ -163,6 +163,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/tsconfig.json">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../pie/dist/express/index.d.ts">
           <value>
             <set />

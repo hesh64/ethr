@@ -15,9 +15,9 @@ export class EthController {
 
   constructor() {}
 
-  @Get('/:id', [ 'id', 'res' ])
+  @Get('/:id', [ 'params.id', 'res' ])
   async get(id, res) {
-    const balance = this.eth.process(id);
+    const balance = await this.eth.process(id);
     res.send({ balance: balance });
   }
 }
