@@ -109,4 +109,4 @@ dist
 # dist
 .dist
 
-./tmp
+.tmp/*
