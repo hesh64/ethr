@@ -3,7 +3,7 @@ const numCPUs = require('os').cpus().length;
 
 if (cluster.isMaster) {
   console.log(`Master ${ process.pid } is running`);
-  import('./cluster');
+  console.log(`there are ${ numCPUs } cpus`);
   // Fork workers.
   for (let i = 0; i < numCPUs; i++) {
     cluster.fork();
@@ -14,6 +14,7 @@ if (cluster.isMaster) {
   });
 }
 else {
-  import('./consumer');
+  import('./cluster');
+
   console.log(`Worker ${ process.pid } started`);
 }

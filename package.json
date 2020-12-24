@@ -4,9 +4,10 @@
   "description": "alrighty so lets see...",
   "main": "index.js",
   "scripts": {
-    "cluster-alone": "ts-node ./src/cluster",
-    "consumer": "ts-node ./src/consumer",
-    "start": "ts-node ./src",
+    "cluster-alone": "NODE_OPTIONS=--max_old_space_size=4096 ts-node ./src/cluster",
+    "consumer": "NODE_OPTIONS=--max_old_space_size=4096 ts-node ./src/consumer",
+    "build": "tsc -p tsconfig.json",
+    "start": "npm run build && NODE_OPTIONS=--max_old_space_size=4096 node ./dist",
     "test": "mocha -r ts-node/register src/test/**/*.spec.ts"
   },
   "keywords": [],
@@ -16,6 +17,7 @@
     "amqplib": "^0.6.0",
     "body-parser": "^1.19.0",
     "config": "^3.3.3",
+    "debug": "^2.6.9",
     "express": "^4.17.1",
     "express-fileupload": "^1.2.0",
     "express-rate-limit": "^5.2.3",

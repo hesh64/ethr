@@ -1,8 +1,7 @@
-import path                                           from 'path';
-import { EventEmitter }                               from 'events';
-import fileUpload                                     from 'express-fileupload';
-import bodyParser                                     from 'body-parser';
-import { Controller, Post, Get, Injectable, emitter } from '../frame/app';
+import path                                       from 'path';
+import fileUpload                                 from 'express-fileupload';
+import bodyParser                                 from 'body-parser';
+import { Controller, Post, Get, Injectable, Use } from '../frame/app';
 
 const relativePath = path.join(__filename, '../../../tmp/');
 
@@ -21,19 +20,21 @@ const mw = [
 @Injectable()
 @Controller({ path: '/file-upload', params: [], middleware: mw, mergeParams: true })
 export class FileUpload {
-  constructor(@emitter private emitter: EventEmitter) {}
+  constructor() {}
+
+  @Use('Rabbit') rmq;
 
   @Get('/', [ 'res' ])
   get(res) {
     res.send('ok');
   }
 
-  @Post('/', ['req', 'res', 'files' ])
+  @Post('/', [ 'req', 'res', 'files' ])
   async upload(req, res, files) {
     if (files.file) {
-      const { tempFilePath, size } = files.file;
+      const { tempFilePath } = files.file;
       const filename = tempFilePath.split('/').slice(-1)[0];
-      this.emitter.emit('extract', filename, size);
+      await this.rmq.commonClient.sendToQueue('files', Buffer.from(filename));
       res.sendStatus(200);
     }
 

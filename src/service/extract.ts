@@ -2,9 +2,9 @@
  * gotta start somewhere,
  */
 import config                  from 'config';
-import { once }                from 'events';
 import path                    from 'path';
 import fs                      from 'fs';
+import { Readable }            from 'stream';
 import { Injectable, On, Use } from '../frame/app';
 
 @Injectable()
@@ -18,62 +18,40 @@ export class Extract {
     return path.join(__filename, '../../../tmp/', filename);
   }
 
-  generateChunkedStreams(filename, size, chunk) {
+  generateStream(filename,): Readable {
     const path = this.getPath(filename);
-    const streams: any = [];
-    let total = 0;
 
-    while ((chunk + total) <= size) {
-      streams.push(
-        fs.createReadStream(path, {
-          start: total,
-          end: total + chunk - 1,
-          emitClose: true,
-          highWaterMark: 43
-        }));
-      total += chunk;
-    }
-    if (total < size) {
-      streams.push(
-        fs.createReadStream(path, {
-          start: total,
-          end: size,
-          emitClose: true,
-          highWaterMark: 43
-        }));
-    }
-
-    return streams;
+    return fs.createReadStream(path, {
+      start: 0,
+      emitClose: true,
+      highWaterMark: 43
+    });
   }
 
   @On('extract')
-  async extract(filename, size) {
+  async extract(filename) {
     try {
-      const chunk = size / (1e1);
-      const streams = this.generateChunkedStreams(filename, size, chunk);
+      const stream: Readable = this.generateStream(filename);
       const ch = await this.rabbit.channel();
-      streams.map(stream => stream.on('error', error => console.log('error', error)));
-      const close = streams.map(stream => once(stream, 'close'));
-
-      setImmediate(() => {
-        streams.map(stream => {
-          stream.on('data', async (data) => {
-            try {
-              await ch.sendToQueue(this.queue, data);
-            }
-            catch (e) {
-              console.log(e);
-            }
-          });
+      ch.on('drain', () => {
+        stream.resume();
+      });
+      stream.on('data', async (data) => {
+        const r = await ch.sendToQueue(this.queue, data);
+        if (!r) {
+          stream.pause();
+        }
+      });
+      return new Promise<void>(async (resolve, reject) => {
+        stream.on('error', (error) => {
+          reject(error);
+        });
+        stream.on('end', () => {
+          resolve();
         });
       });
-
-      await Promise.all(close);
-      console.log('done');
     }
     catch (error) {
-      // retry logic
-      // report the error
       console.log(error);
     }
   }

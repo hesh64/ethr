@@ -23,14 +23,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d6bb3388-4bad-4a8e-8635-966360b5dc48" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/sonarIssues.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarIssues.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/default.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/default.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cluster/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/cluster/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/consumer/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/consumer/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/file.upload.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/file.upload.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/eth.wallet.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/eth.wallet.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/datasource/rabbit.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/datasource/rabbit.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/service/extract.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/extract.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/web3.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/web3.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +54,12 @@
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="2" />
   </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
   <component name="ProjectId" id="1m2oAdmTunPRk9OupsFU66baHJU" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -61,13 +70,32 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="eu.ydp.idea.ts.spec.generator.settings.spec.template" value="import {$ClassName$} from '$TestsRelativePath$../src/$classRelativePath$/$ClassName$';&#10;&#10;describe('$ClassName$', () =&gt; {&#10;  let $ObjName$:$ClassName$;&#10;&#10;  beforeEach(() =&gt; {&#10;    $ObjName$ = new $ClassName$();&#10;  });&#10;&#10;  describe('', () =&gt; {&#10;    it('', () =&gt; {&#10;      // given&#10;&#10;      // when&#10;&#10;      // then&#10;    });&#10;  });&#10;});&#10;" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="settings.typescriptcompiler" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/test" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="$USER_HOME$/.nvm/versions/node/v15.2.1/bin/node" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -81,7 +109,8 @@
       <workItem from="1608707350758" duration="43324000" />
       <workItem from="1608786604203" duration="7484000" />
       <workItem from="1608796188424" duration="2847000" />
-      <workItem from="1608828911054" duration="7869000" />
+      <workItem from="1608828911054" duration="20571000" />
+      <workItem from="1608851508993" duration="2549000" />
     </task>
     <servers />
   </component>
@@ -104,24 +133,57 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="360" y="233" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608784352330">
-      <screen x="0" y="23" width="1792" height="1097" />
+    <state x="2306" y="294" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608838103047">
+      <screen x="1792" y="23" width="2560" height="1417" />
     </state>
     <state x="360" y="233" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1792.1097@0.23.1792.1097" timestamp="1608784352330" />
+    <state x="2306" y="294" key="#com.intellij.execution.impl.EditConfigurationsDialog/1792.23.2560.1417/0.23.1792.1097@1792.23.2560.1417" timestamp="1608838103047" />
+    <state x="2810" y="518" key="#com.intellij.ide.scriptingContext.ui.PerFileMappingsDialogWrapper" timestamp="1608837944699">
+      <screen x="1792" y="23" width="2560" height="1417" />
+    </state>
+    <state x="2810" y="518" key="#com.intellij.ide.scriptingContext.ui.PerFileMappingsDialogWrapper/1792.23.2560.1417/0.23.1792.1097@1792.23.2560.1417" timestamp="1608837944699" />
     <state x="584" y="314" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1608795987180">
       <screen x="0" y="23" width="1792" height="1097" />
     </state>
     <state x="584" y="314" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.1792.1097@0.23.1792.1097" timestamp="1608795987180" />
+    <state x="2823" y="578" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1608837003343">
+      <screen x="1792" y="23" width="2560" height="1417" />
+    </state>
+    <state x="2823" y="578" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1792.23.2560.1417/0.23.1792.1097@1792.23.2560.1417" timestamp="1608837003343" />
+    <state x="2860" y="483" key="FileChooserDialogImpl" timestamp="1608836946325">
+      <screen x="1792" y="23" width="2560" height="1417" />
+    </state>
+    <state x="2860" y="483" key="FileChooserDialogImpl/1792.23.2560.1417/0.23.1792.1097@1792.23.2560.1417" timestamp="1608836946325" />
+    <state width="2518" height="355" key="GridCell.Tab.0.bottom" timestamp="1608838296997">
+      <screen x="1792" y="23" width="2560" height="1417" />
+    </state>
+    <state width="2518" height="355" key="GridCell.Tab.0.bottom/1792.23.2560.1417/0.23.1792.1097@1792.23.2560.1417" timestamp="1608838296997" />
+    <state width="2518" height="355" key="GridCell.Tab.0.center" timestamp="1608838296997">
+      <screen x="1792" y="23" width="2560" height="1417" />
+    </state>
+    <state width="2518" height="355" key="GridCell.Tab.0.center/1792.23.2560.1417/0.23.1792.1097@1792.23.2560.1417" timestamp="1608838296997" />
+    <state width="2518" height="355" key="GridCell.Tab.0.left" timestamp="1608838296996">
+      <screen x="1792" y="23" width="2560" height="1417" />
+    </state>
+    <state width="2518" height="355" key="GridCell.Tab.0.left/1792.23.2560.1417/0.23.1792.1097@1792.23.2560.1417" timestamp="1608838296996" />
+    <state width="2518" height="355" key="GridCell.Tab.0.right" timestamp="1608838296997">
+      <screen x="1792" y="23" width="2560" height="1417" />
+    </state>
+    <state width="2518" height="355" key="GridCell.Tab.0.right/1792.23.2560.1417/0.23.1792.1097@1792.23.2560.1417" timestamp="1608838296997" />
+    <state x="2581" y="370" key="SettingsEditor" timestamp="1608837957464">
+      <screen x="1792" y="23" width="2560" height="1417" />
+    </state>
+    <state x="2581" y="370" key="SettingsEditor/1792.23.2560.1417/0.23.1792.1097@1792.23.2560.1417" timestamp="1608837957464" />
     <state x="2528" y="237" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1608832283727">
       <screen x="1792" y="23" width="2560" height="1417" />
     </state>
     <state x="515" y="189" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.23.1792.1097@0.23.1792.1097" timestamp="1608790035216" />
     <state x="2528" y="237" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/1792.23.2560.1417/0.23.1792.1097@1792.23.2560.1417" timestamp="1608832283727" />
-    <state x="2645" y="414" width="855" height="633" key="find.popup" timestamp="1608832784788">
+    <state x="2645" y="414" width="855" height="633" key="find.popup" timestamp="1608853636064">
       <screen x="1792" y="23" width="2560" height="1417" />
     </state>
     <state x="597" y="326" width="598" height="490" key="find.popup/0.23.1792.1097@0.23.1792.1097" timestamp="1608795944680" />
-    <state x="2645" y="414" width="855" height="633" key="find.popup/1792.23.2560.1417/0.23.1792.1097@1792.23.2560.1417" timestamp="1608832784788" />
+    <state x="2645" y="414" width="855" height="633" key="find.popup/1792.23.2560.1417/0.23.1792.1097@1792.23.2560.1417" timestamp="1608853636064" />
     <state x="2593" y="339" width="958" height="874" key="search.everywhere.popup" timestamp="1608832812044">
       <screen x="1792" y="23" width="2560" height="1417" />
     </state>

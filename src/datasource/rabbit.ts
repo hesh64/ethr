@@ -5,20 +5,22 @@ import { Singleton, SingletonTypes } from '../frame/app';
 export class Rabbit {
   public con;
 
+  private common;
+
   constructor(protected options) {}
 
   async connect() {
     this.con = await connect(this.options.url);
+    this.common = await this.channel();
+  }
+
+  get commonClient() {
+    return this.common;
   }
 
   channel(): Promise<any> {
     return this.con.createChannel();
-    // return new Promise((resolve, reject) => {
-    //   this.con.createChannel((err, ch) => {
-    //     reject(err);
-    //     resolve(ch);
-    //   });
-    // });
+
   }
 
   async getConsumer() {

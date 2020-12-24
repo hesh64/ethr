@@ -16,6 +16,33 @@ class Application extends App {
           init: async (config, Rabbit) => {
             const rabbit = new Rabbit(config);
             await rabbit.connect();
+            const ch = await rabbit.channel();
+            await ch.assertQueue('files');
+            await ch.assertQueue(process.pid.toString());
+
+            ch.consume('files', async (message) => {
+              try {
+                if (message && message.content) {
+                  await this.digest<any>({
+                    // todo this is not needed I need to adjust the type
+                    //  definition
+                    replyTo: true,
+                    execRef: {
+                      ctor: 'Extract',
+                      ctorArgs: [],
+                      fn: 'extract',
+                      fnArgs: [ message.content.toString() ]
+                    },
+                    callerContext: {}
+                  });
+                  await ch.ack(message);
+                }
+              }
+              catch (error) {
+                console.log(error);
+              }
+            });
+
             return rabbit;
           }
         },
@@ -26,7 +53,7 @@ class Application extends App {
             const redis = new Redis(config.port);
             await redis.connect();
             await redis.client.set('test', 'value');
-            await redis.client.flushall()
+            await redis.client.flushall();
             return redis;
           }
         },
@@ -58,7 +85,8 @@ export const app = new Application();
 
 async function main() {
   await app.init();
-  console.log('Lit!');
+
+  console.log(process.pid, 'Lit!');
 }
 
 main().catch(console.log);
