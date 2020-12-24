@@ -4,6 +4,7 @@ import {
   ControllerFactory,
   SingletonTypes,
   Emitter as _Emitter,
+  CustomDecFactory,
 }                           from './injectable';
 import type { // I aint got no type
   Pipeline,
@@ -15,6 +16,7 @@ import type { // I aint got no type
 const _emitter = new _Emitter();
 
 export {
+  CustomDecFactory,
   SingletonTypes
 };
 

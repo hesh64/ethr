@@ -284,3 +284,14 @@ export function ControllerFactory(emitter: Emitter) {
     }
   };
 }
+
+
+/**
+ * for now we will only support making custom method decorators.
+ * @param fn
+ * @returns {any}
+ * @constructor
+ */
+export function CustomDecFactory(fn) {
+  return fn(injectables, singletons, singletonStore);
+}

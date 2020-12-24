@@ -11,6 +11,16 @@ class Application extends App {
     super(
       MakePipeline([
         {
+          key: 'Redis',
+          config: config.get('Redis'),
+          init: async (config, Redis) => {
+            const redis = new Redis(config);
+            await redis.connect();
+            await redis.client.set('test', 'value');
+            return redis;
+          }
+        },
+        {
           key: 'Web3',
           config: config.get('Web3'),
           init: async (config, Web3) => {

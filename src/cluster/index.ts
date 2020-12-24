@@ -19,6 +19,16 @@ class Application extends App {
           }
         },
         {
+          key: 'Redis',
+          config: config.get('Redis'),
+          init: async (config, Redis) => {
+            const redis = new Redis(config);
+            await redis.connect();
+            await redis.client.set('test', 'value');
+            return redis;
+          }
+        },
+        {
           key: 'Http',
           config: config.get('Http'),
           init: async (config, Http) => {

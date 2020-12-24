@@ -1,5 +1,5 @@
 import { Injectable, Use, On } from '../frame/app';
-
+import {CheckCacheElseCache} from '../datasource'
 
 @Injectable()
 export class EthWallet {
@@ -9,9 +9,9 @@ export class EthWallet {
   constructor() {
   }
 
+  @CheckCacheElseCache
   @On('process:account')
   async process(account) {
-    console.log(account)
-    // console.log(await this.web3.eth.getBalance(account, 'latest'));
+    return await this.web3.eth.getBalance(account, 'latest');
   }
 }
