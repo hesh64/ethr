@@ -26,7 +26,7 @@ class Application extends App {
             const redis = new Redis(config.port);
             await redis.connect();
             await redis.client.set('test', 'value');
-
+            await redis.client.flushall()
             return redis;
           }
         },

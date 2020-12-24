@@ -13,6 +13,13 @@ export class EthWallet {
   @CheckCacheElseCache
   @On('process:account')
   async process(account) {
-    return this.web3.ethClient.getBalance(account, 'latest');
+    try {
+      const cs = this.web3.utils.toChecksumAddress(account);
+      const t = await this.web3.ethClient.getBalance(cs, 'latest');
+      return t;
+    }
+    catch (e) {
+      console.log('err', e);
+    }
   }
 }

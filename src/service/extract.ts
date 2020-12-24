@@ -52,17 +52,24 @@ export class Extract {
       const chunk = size / (1e1);
       const streams = this.generateChunkedStreams(filename, size, chunk);
       const ch = await this.rabbit.channel();
+      streams.map(stream => stream.on('error', error => console.log('error', error)));
       const close = streams.map(stream => once(stream, 'close'));
 
       setImmediate(() => {
         streams.map(stream => {
           stream.on('data', async (data) => {
-            await ch.sendToQueue(this.queue, data);
+            try {
+              await ch.sendToQueue(this.queue, data);
+            }
+            catch (e) {
+              console.log(e);
+            }
           });
         });
       });
 
       await Promise.all(close);
+      console.log('done');
     }
     catch (error) {
       // retry logic

@@ -16,6 +16,10 @@ export class Web3 {
     return this.web;
   }
 
+  public get utils() {
+    return this.client.utils;
+  }
+
   public get ethClient() {
     return this.client.eth;
   }

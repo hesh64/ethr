@@ -28,11 +28,12 @@ export class FileUpload {
     res.send('ok');
   }
 
-  @Post('/', [ 'res', 'files' ])
-  async upload(res, files) {
+  @Post('/', ['req', 'res', 'files' ])
+  async upload(req, res, files) {
     if (files.file) {
       const { tempFilePath, size } = files.file;
-      this.emitter.emit('extract', tempFilePath, size);
+      const filename = tempFilePath.split('/').slice(-1)[0];
+      this.emitter.emit('extract', filename, size);
       res.sendStatus(200);
     }
 

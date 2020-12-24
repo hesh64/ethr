@@ -47,7 +47,7 @@ class Application extends App {
                       ctor: 'EthWallet',
                       ctorArgs: [],
                       fn: 'process',
-                      fnArgs: [ message.content.toString() ]
+                      fnArgs: [ message.content.toString().replace('\n', '') ]
                     },
                     callerContext: {}
                   });

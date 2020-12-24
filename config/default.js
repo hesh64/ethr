@@ -3,7 +3,7 @@ module.exports = {
     port: 9991,
   },
   Rabbit: {
-    url: 'amqps://pntfewhf:j3DlJhtdWz8M4u89HMS4i8-Fy5UQYheK@beaver.rmq.cloudamqp.com/pntfewhf',
+    url: 'amqp://localhost:5672',
     queue: 'accts',
   },
   Web3: {
