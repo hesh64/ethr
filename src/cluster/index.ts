@@ -1,5 +1,5 @@
-import config                                    from 'config';
-import { Singleton, MakePipeline, App, Routers } from '../frame/app';
+import config                         from 'config';
+import { MakePipeline, App, Routers } from '../frame/app';
 import '../controllers';
 import '../service';
 import '../server';
@@ -15,8 +15,6 @@ class Application extends App {
           init: async (config, Rabbit) => {
             const rabbit = new Rabbit(config);
             await rabbit.connect();
-
-            console.log(await rabbit.channel())
             return rabbit;
           }
         },

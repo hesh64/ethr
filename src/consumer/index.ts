@@ -1,5 +1,5 @@
-import config                                             from 'config';
-import { Singleton, MakePipeline, App, Routers, emitter } from '../frame/app';
+import config                from 'config';
+import { MakePipeline, App } from '../frame/app';
 import '../controllers';
 import '../service';
 import '../server';
@@ -37,11 +37,11 @@ class Application extends App {
                       ctor: 'EthWallet',
                       ctorArgs: [],
                       fn: 'process',
-                      fnArgs: [message.content.toString()]
+                      fnArgs: [ message.content.toString() ]
                     },
                     callerContext: {}
                   });
-                  await channel.ack(message)
+                  await channel.ack(message);
                 }
               }
               catch (error) {

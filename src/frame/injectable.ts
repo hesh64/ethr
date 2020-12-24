@@ -29,7 +29,6 @@ export const proxyConstructor = (ctor) => {
       meta.argList ??= [];
       meta.argList.forEach((k, i) => {
         if (k) {
-          console.log(k, i)
           argArray[i] = k;
         }
       });
@@ -178,7 +177,6 @@ export function SingletonFactory() {
       };
     },
     Use: (name: string) => {
-      console.log(183)
       return (inst, p) => {
         const meta = getMetaElseInit(key, inst);
         meta.singletons ??= [];

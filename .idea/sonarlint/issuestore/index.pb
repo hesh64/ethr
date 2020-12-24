@@ -1,16 +1,10 @@
 
 =
 tsconfig.json,6/1/61ebb9fd6e8cf9082658121d5d81e297791dacd0
-=
-test/test.csv,b/c/bc39a1bf0e26c6f12f1ca0b99edddf0456990261
-X
-(test/eth_address_sample_1m_addresses.csv,6/9/69d3af05c9cf9cb9b90568787c0348c05df9f62a
 9
 	readme.md,2/7/275d783e298228506068436512433d343feb52aa
 A
 src/utils/web3.ts,c/7/c720969bbb1a0da924ba6bd54e5831bf32c9563f
-B
-src/utils/redis.ts,f/d/fd8b7ed9bc18e2112620bdc3be0a88bcc4b57434
 E
 src/consumer/index.ts,9/2/92053e7912469376beded5f0bf0fb302e6b37806
 <
@@ -21,10 +15,6 @@ G
 src/datasource/index.ts,8/5/85031edb5424e155634626802238f6676fd39636
 H
 src/controllers/index.ts,4/a/4a2f33951ce07c1ff7184f91877aa13db05d3785
-A
-src/node/index.ts,f/0/f02e566a7c9c12ac85142419ae414956eca6a6e2
-H
-src/service/readStrea.ts,b/3/b31cc0cd22e8c15d9becab8f174f5625625b31b6
 A
 config/default.js,7/b/7b00f78d9611c22a801d8e0e403cd5740f641437
 B
@@ -43,3 +33,14 @@ D
 src/service/index.ts,5/0/50c7faa3bb44d7b4b502a153c55d6cb95685f28f
 I
 src/service/eth.wallet.ts,8/8/8818e01ca5c6b1ca89ecaa5ea4817d9e65d803d4
+B
+src/utils/index.ts,0/c/0cc957a5bbd31d0d6029a0eb5dd2b84ad8f9ef09
+@
+src/utils/lru.ts,1/4/14d9daa9a8eaf6f5f64d72908b2165a28ce3d1ec
+<
+package.json,7/0/7030d0b2f71b999ff89a343de08c414af32fc93a
+:
+
+.gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
+F
+src/service/extract.ts,4/b/4b254f6bb94ff1eec06b53020259f0b063e02956
