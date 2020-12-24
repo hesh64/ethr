@@ -23,8 +23,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d6bb3388-4bad-4a8e-8635-966360b5dc48" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/controllers/file.upload.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/file.upload.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/extract.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/extract.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/index.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +77,7 @@
       <workItem from="1608707350758" duration="43324000" />
       <workItem from="1608786604203" duration="7484000" />
       <workItem from="1608796188424" duration="2847000" />
+      <workItem from="1608828911054" duration="360000" />
     </task>
     <servers />
   </component>
@@ -94,6 +97,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="360" y="233" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608784352330">

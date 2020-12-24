@@ -5,11 +5,11 @@ import {
   SingletonTypes,
   Emitter as _Emitter,
   CustomDecFactory,
-}                           from './injectable';
+} from './injectable';
 import type { // I aint got no type
   Pipeline,
   CallerContext
-}                           from './injectable';
+} from './injectable';
 
 
 // PAP POOP PEEP

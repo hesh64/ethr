@@ -3,4 +3,4 @@ import './redis';
 
 export {
   CheckCacheElseCache
-} from './redis'
+} from './redis';

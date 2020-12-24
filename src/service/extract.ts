@@ -67,7 +67,7 @@ export class Extract {
     catch (error) {
       // retry logic
       // report the error
-      console.log(error)
+      console.log(error);
     }
   }
 }
