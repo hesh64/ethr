@@ -188,6 +188,61 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../piebase/src/app.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../piebase/src/common/injectable.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../piebase/src/common/observable.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../piebase/src/common/pipeline.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../piebase/src/common/singleton.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../piebase/src/common/tools.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../piebase/src/context.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../piebase/src/controller.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../piebase/src/injectable.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../piebase/src/pie.express.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/code/http2/src/index.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
       </map>
     </option>
   </component>

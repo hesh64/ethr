@@ -6,6 +6,18 @@ import '../server';
 import '../datasource';
 import '../utils';
 
+/**
+ * Extend App,
+ *
+ * Take in a startup sequence sequence --
+ * Connect to redis, rabbit, start a consumer.
+ *
+ * Could be abstracted out further.
+ *
+ * The idea for this sequence at the time was that when a cluster launches it's first job is
+ * connect to rabbit, to redis, then whatever sdks, then finally startup it's http server to
+ * receive a file to process.
+ */
 class Application extends App {
   constructor() {
     super(
@@ -20,6 +32,11 @@ class Application extends App {
             await ch.assertQueue('files');
             await ch.assertQueue(process.pid.toString());
 
+            /**
+             * Round robbin wasn't distributing the load evenly between the instances
+             *
+             * so i enqueued them, because rabbit did a great job as distributing the load evenly
+             */
             ch.consume('files', async (message) => {
               try {
                 if (message && message.content) {
@@ -52,7 +69,9 @@ class Application extends App {
           init: async (config, Redis) => {
             const redis = new Redis(config.port);
             await redis.connect();
+            // test it to make sure.
             await redis.client.set('test', 'value');
+            // during testing i wasnted a quick qay to clear out everything,
             await redis.client.flushall();
             return redis;
           }

@@ -6,6 +6,12 @@ import '../server';
 import '../datasource';
 import '../utils';
 
+/**
+ * Not used in the main application that was my initial design
+ *
+ * left it here for discussion purposes.
+ */
+
 class Application extends App {
   constructor() {
     super(
